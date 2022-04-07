@@ -1,0 +1,25 @@
+A - Render core ( canvas rendering / svg behavour / statics / ... )
+B - Game logic ( score count / classes stats / ... )
+C - Gameplay ( player inputs / physics / ... )
+___________________
+
+( A )
+    - 
+    -
+    -
+
+-------------------
+
+( B )
+    -
+    -
+    -
+
+    
+-------------------
+
+( C )
+    -
+    -
+    -
+
