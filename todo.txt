@@ -23,3 +23,10 @@ ___________________
     -
     -
 
+------------------
+
+REMINDER 
+
+- make alpha version with shapes instead of svg/img
+    - player -> rectengle (w: 100 / h: 400 ? approx)
+    - ennemies -> ( basics one shot -> 150/150 ?)

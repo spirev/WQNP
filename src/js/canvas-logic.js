@@ -1,9 +1,19 @@
 "use strict";
 
+import { player, monsters, grounds, items } from './assets';
+
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const canvas_height = document.body.clientHeight;
 let canvas_width = document.body.clientWidth;
+
+// assets object init
+const assets = {
+    player: player,
+    monsters: monsters,
+    grounds: grounds,
+    items: items
+};
 
 // INTIALIZATION AND RESIZE WINDOW
 
@@ -22,19 +32,20 @@ window.addEventListener('resize', () => {
 
 /**
  * 
- *  - rerender canvas 60 time by second
+ *  - rerender canvas 60 times per second
  * 
  *  - erase previous render ( maybe keep static elemnts ? )
  *  - take the positions of every elements that has to be displayed in canvas and place them
  *  - new render
  */
 
-const render = () => {
-    console.log('render function');
+const render = (assets) => {
+    let p = new Path2D(assets.player.skin);
+    ctx.fill(p);
 };
 
  const gameLoop = () => {
-     render();
+     render(assets);
      window.requestAnimationFrame(gameLoop);
  }
 
