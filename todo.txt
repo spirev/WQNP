@@ -1,32 +1,100 @@
-A - Render core ( canvas rendering / svg behavour / statics / ... )
-B - Game logic ( score count / classes stats / ... )
-C - Gameplay ( player inputs / physics / ... )
-___________________
+SUMMARY
+
+A - Render core (canvas rendering, svg behavour, statics, ...)
+B - Gameplay (player inputs, physics, collisions, )
+C - Game logic (score count, classes stats, ...)
+D - Out of game boundary (menu, account, about, saving stats, ...)
+
+------------------------------
+LEGEND
+
+* = just explanatory title (it is just some titles...)
++ = interface component (buttons, formfields, ...)
+- = actual feature to code (regex, DB saving, a lot of JS, ...)
+
+______________________________
 
 ( A )
-    - 
-    -
-    -
+    * create ground
+        - properties in js file (width, height, physic, ...)
+        - rendering
+    * create player
+        * visual
+            - create shape (width, height)
+            - rendering
+        * physic
+            - create properties (jump, speed, ...)
+    * create basic player attack
+        - properties ( width, height, damages, lag/recovery, ...)
+        - rendering
+    * create enemies
+        - properties
+        - rendering
 
--------------------
+-----------------------------
 
 ( B )
+    - 
+    - 
     -
-    -
-    -
-
     
--------------------
+------------------------------
 
 ( C )
     -
     -
     -
 
-------------------
+------------------------------
 
-REMINDER 
+( D )
+    * home page menu
+        + play without a account button
 
-- make alpha version with shapes instead of svg/img
-    - player -> rectengle (w: 100 / h: 400 ? approx)
-    - ennemies -> ( basics one shot -> 150/150 ?)
+        + sign in button
+            - redirect
+            + username field
+                -regex
+            + password field
+                -regex
+            + confirm button
+                - redirect
+                + success message
+                
+        + sign up button
+            + email address field
+            + confirm button
+            - sending email
+            - confirmation link
+            + double password field
+            + confirm button
+
+        + logout button
+
+        + option button
+            * inputs
+                - save player inputs
+            * others
+                - delete account ( if logged in)
+            * sounds
+                - general volume
+                - music volume
+                - fx volume
+
+
+______________________________
+
+NEXT STEP
+
+- create player shape
+- player inputs
+- make gravity
+- make ground
+- make player stand on ground
+- jump ?
+
+______________________________
+
+REMINDER
+
+make it a one page application for the sake of UX !
