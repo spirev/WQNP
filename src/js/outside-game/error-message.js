@@ -1,5 +1,4 @@
 const errorMessage = document.getElementById('errorMessage');
-console.log(errorMessage);
 
 export const changeErrorMessage = (errorText) => {
     errorMessage.style.display = 'flex';

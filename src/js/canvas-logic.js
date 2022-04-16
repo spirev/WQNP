@@ -2,17 +2,19 @@
 
 import { changeErrorMessage, gameUnsupported } from "./outside-game/error-message";
 
-// get canvas element and its context here to be accessible by all part of this file
+// get canvas to be accessible in the entirety of this file
+// check if game functionnalites are supported by browser otherwise display error message
 const canvas = document.getElementById('game-canvas');
 if (canvas.getContext) {
     const ctx = canvas.getContext('2d');
 }
-else  {
+else {
     canvas.style.display = 'none';
     gameUnsupported();
 }
 
-// initialization and window resizing
+// initialize canvas width and height
+// call gameLoop function
 const init = () => {
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
@@ -26,16 +28,19 @@ window.addEventListener('resize', () => {
 });
 
 // RENDERING
-/**
- *  - erase previous render ( maybe keep static elemnts ? )
- *  - take the positions of every elements that has to be displayed in canvas and place them
- *  - new render
- */
 
 const render = () => {
+    /**
+     *  TODO
+     * 
+     *  1 - erase previous render ( maybe keep static elemnts ? )
+     *  2 - take the positions of every elements that has to be displayed in canvas and place them
+     *  3 - new render
+     */
     console.log('render a frame');
 };
 
+// this is the function that is call on every frame (60 times by seconde)
 const gameLoop = () => {
     render();
     window.requestAnimationFrame(gameLoop);
