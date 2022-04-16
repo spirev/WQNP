@@ -1,52 +1,44 @@
 "use strict";
 
-import { player, monsters, grounds, items } from './assets';
+import { changeErrorMessage, gameUnsupported } from "./outside-game/error-message";
 
+// get canvas element and its context here to be accessible by all part of this file
 const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
-const canvas_height = document.body.clientHeight;
-let canvas_width = document.body.clientWidth;
+if (canvas.getContext) {
+    const ctx = canvas.getContext('2d');
+}
+else  {
+    canvas.style.display = 'none';
+    gameUnsupported();
+}
 
-// assets object init
-const assets = {
-    player: player,
-    monsters: monsters,
-    grounds: grounds,
-    items: items
-};
-
-// INTIALIZATION AND RESIZE WINDOW
-
+// initialization and window resizing
 const init = () => {
-    canvas.width = canvas_width;
-    canvas.height = canvas_height;
+    canvas.width = document.body.clientWidth;
+    canvas.height = document.body.clientHeight;
     window.requestAnimationFrame(gameLoop);
 };
 
+// resize game window on request
 window.addEventListener('resize', () => {
-    canvas_width = document.body.clientWidth;
+    let canvas_width = document.body.clientWidth;
     canvas.width = canvas_width;
 });
 
 // RENDERING
-
 /**
- * 
- *  - rerender canvas 60 times per second
- * 
  *  - erase previous render ( maybe keep static elemnts ? )
  *  - take the positions of every elements that has to be displayed in canvas and place them
  *  - new render
  */
 
-const render = (assets) => {
-    let p = new Path2D(assets.player.skin);
-    ctx.fill(p);
+const render = () => {
+    console.log('render a frame');
 };
 
- const gameLoop = () => {
-     render(assets);
-     window.requestAnimationFrame(gameLoop);
- }
+const gameLoop = () => {
+    render();
+    window.requestAnimationFrame(gameLoop);
+}
 
 window.onload = init();
