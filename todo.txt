@@ -98,3 +98,12 @@ ______________________________
 REMINDER
 
 make it a one page application for the sake of UX !
+
+______________________________
+
+IDEAS
+
+for an rpg experience :
+- classes ( own stats and abilities )
+- stuff ( diablo like )
+- items drop to wear randomized on each game
