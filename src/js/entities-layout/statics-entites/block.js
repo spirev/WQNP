@@ -3,4 +3,7 @@ export const block = {
     posY: 0,
     width: 0,
     height: 0,
+    render: () => {
+        drawRectangle(120, 60, 20, 30);
+    },
 };
