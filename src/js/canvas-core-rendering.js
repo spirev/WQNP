@@ -12,12 +12,10 @@ const render = (ctx, staticsEntities, entities) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // launch render function on every object in statics and none-statics entites
     staticsEntities.forEach(element => {
-        console.log('all statics-entities groupe (ground, block, ...)');
-        console.log(element);
+        console.log('all statics-entities groupe (ground, block, ...)', element);
         
         element.forEach( (element, index) => {
-            console.log('all statics-entities of every groupe (ground 1, ground 2, ...)');
-            console.log(element);
+            console.log('all statics-entities of every groupe (ground 1, ground 2, ...)', element);
 
             staticsEntitiesTools.groundTools.render(ctx, index);
         });
@@ -50,6 +48,12 @@ const initCanvas = (ctx) => {
     window.requestAnimationFrame(gameLoop(ctx));
 };
 
+// Resize game window on request
+window.addEventListener('resize', () => {
+    let canvas_width = document.body.clientWidth;
+    canvas.width = canvas_width;
+});
+
 // Get canvas to be accessible in the entirety of this file
 // Check if game functionnalites are supported by browser otherwise display error message
 const canvas = document.getElementById('game-canvas');
@@ -61,9 +65,3 @@ else {
     canvas.style.display = 'none';
     gameUnsupported();
 }
-
-// Resize game window on request
-window.addEventListener('resize', () => {
-    let canvas_width = document.body.clientWidth;
-    canvas.width = canvas_width;
-});
