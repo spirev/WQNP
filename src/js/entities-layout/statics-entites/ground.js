@@ -1,44 +1,66 @@
-export const ground = {
-    posX: 0,
-    posY: 0,
-    width: 200,
-    height: 50,
-    color: 'black',
-    
-    setPosX: (newPosX) => {
-        this.posX = newPosX;
-    },
-    getPosX: () => {
-        return this.posX;
-    },
+export class Ground {
 
-    setPosY: (newPosY) => {
-        this.posY = newPosY;
-    },
-    getPosY: () => {
-        return this.posY;
-    },
+    constructor(posX = 0, posY = 0, width = 200, height = 50, color = 'black') {
+        this.posX = posX;
+        this.posY = posY;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    };
 
-    setWidth: (newWidth) => {
-        this.width = newWidth;
-    },
-    getWidth: () => {
-        return this.width;
-    },
- 
-    setHeight: (newHeight) => {
-        this.height = newHeight;
-    },
-    getHeight: () => {
-        return this.height;
-    },
-    
-    setColor: (newColor) => {
-        this.color = newColor;
-    },
-    getColor: () => {
-        return this.color;
-    },
+    get posX() {
+        return this._posX
+    };
 
+    set posX(value) {
+        this._posX = value;
+    };
 
-};
+    get posY() {
+        return this._posY
+    };
+
+    set posY(value) {
+        this._posY = value;
+    };
+
+    get width() {
+        return this._width;
+    }
+
+    set width(value) {
+        if (value < 0) {
+            console.error('ground width can\'t be less than 0');
+            return;
+        }
+        this._width = value;
+    }
+
+    get height() {
+        return this._height;
+    }
+
+    set height(value) {
+        if (value < 0) {
+            console.error('ground height can\'t be less than 0');
+            return;
+        }
+        this._height = value;
+    };
+
+    get color() {
+        return this._color;
+    }
+
+    set color(value) {
+        if (value.length < 3) {
+            console.error('ground color length can\'t be less than 2 characteres');
+            return;
+        }
+        this._color = value;
+    }
+
+    get color() {
+        return this._color;
+    }
+}

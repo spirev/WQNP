@@ -86,6 +86,8 @@ ______________________________
 
 NEXT STEP
 
+- find how to move camera through map ( aka : moving statics objects on screen)
+- tranform layout object into classes
 - create player shape
 - player inputs
 - make gravity
