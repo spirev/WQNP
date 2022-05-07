@@ -1,9 +1,23 @@
-import { player1 } from "./player/player-state";
+import { playerState, playerTools } from "./player/player-state";
 import { itemsState } from "./items/items-state";
 
-// regroup all entites in one object
+export const entitiesTools = {
+    readEntities: () => {
+        console.log(entitiesState);
+    },
 
-export const entitiesState = {
-    player: player1,
-    itemsState: itemsState,
+    renderAllEntities: (ctx) => {
+        const allTools =  [playerTools];
+        allTools.forEach(element => {
+            element.renderAll(ctx);
+        });
+    },
+
+    playerTools: playerTools,
 };
+
+// regroup all entites in one object
+export const entitiesState = Object.values({
+    player: playerState,
+    itemsState: itemsState,
+});

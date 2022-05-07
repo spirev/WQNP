@@ -3,7 +3,7 @@
 import { changeErrorMessage, gameUnsupported } from "./outside-game/error-message";
 import { initGame } from "./game-logic";
 import { staticsEntitiesState, staticsEntitiesTools } from "./entities-state/statics-entities/statics-entities-state";
-import { entitiesState } from "./entities-state/entities/entities-state";
+import { entitiesState, entitiesTools } from "./entities-state/entities/entities-state";
 
 // RENDERING
 const render = (ctx, staticsEntities, entities) => {
@@ -12,6 +12,7 @@ const render = (ctx, staticsEntities, entities) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // launch render function on every object in statics and none-statics entites
     staticsEntitiesTools.renderAllStaticsEntities(ctx);
+    entitiesTools.renderAllEntities(ctx);
 
 };
 

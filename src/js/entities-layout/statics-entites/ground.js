@@ -1,5 +1,5 @@
 export class Ground {
-    constructor(posX = 0, posY = 0, width = 200, height = 50, color = 'black') {
+    constructor(posX = 0, posY = 0, width = 200, height = 50, color = '#2f6324') {
         this.posX = posX;
         this.posY = posY;
         this.width = width;

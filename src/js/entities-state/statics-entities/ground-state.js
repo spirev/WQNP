@@ -3,18 +3,22 @@ import { drawRectangle } from "../../drawings/shapes/rectangle";
 
 export const groundState = [];
 export const groundTools = {
-    addGround: (width = 200, height = 50, posX = 100, posY = 100, color = 'red') => {
+    addGround: (width, height, posX, posY, color) => {
         const newGround = new Ground(posX, posY, width, height, color);
         groundState.push(newGround);
     },
 
     addMainGround: () => {
-        let mainGround = new Ground(0, 930, 2000, 120, '#541717');
+        let mainGround = new Ground(0, 930, 2000, 120, '#2f6324');
         groundState.push(mainGround);
     },
 
     deleteGround: (index) => {
-        if (index > -1) groundState.splice(index, 1);
+        if (index < 0) {
+            console.error(`can\t delete a ground on index ${index}`);
+            return;
+        }
+        groundState.splice(index, 1);
     },
 
     render: (ctx, index) => {
