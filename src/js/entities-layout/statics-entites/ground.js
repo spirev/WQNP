@@ -1,5 +1,4 @@
 export class Ground {
-
     constructor(posX = 0, posY = 0, width = 200, height = 50, color = 'black') {
         this.posX = posX;
         this.posY = posY;

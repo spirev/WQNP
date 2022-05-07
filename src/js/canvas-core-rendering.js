@@ -11,15 +11,8 @@ const render = (ctx, staticsEntities, entities) => {
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // launch render function on every object in statics and none-statics entites
-    staticsEntities.forEach(element => {
-        console.log('all statics-entities groupe (ground, block, ...)', element);
-        
-        element.forEach( (element, index) => {
-            console.log('all statics-entities of every groupe (ground 1, ground 2, ...)', element);
+    staticsEntitiesTools.renderAllStaticsEntities(ctx);
 
-            staticsEntitiesTools.groundTools.render(ctx, index);
-        });
-    });
 };
 
 // Function that is call on every frame (60 times by seconde)

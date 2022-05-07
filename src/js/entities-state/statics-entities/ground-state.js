@@ -18,7 +18,13 @@ export const groundTools = {
     },
 
     render: (ctx, index) => {
-        drawRectangle(ctx, groundState[index].color, groundState[index].posX, groundState[index].posY, groundState[index].width, groundState[index].height);
+        drawRectangle(ctx, groundState[index].posX, groundState[index].posY, groundState[index].width, groundState[index].height, groundState[index].color);
+    },
+    
+    renderAll: (ctx) => {
+        groundState.forEach( (element, index) => {
+            drawRectangle(ctx, groundState[index].posX, groundState[index].posY, groundState[index].width, groundState[index].height, groundState[index].color);
+        });
     },
 
     readGround: () => {

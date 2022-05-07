@@ -5,5 +5,6 @@ import { entitiesState } from "./entities-state/entities/entities-state";
 export const initGame = () => {
     // create main ground
     staticsEntitiesTools.groundTools.addMainGround();
+    staticsEntitiesTools.blockTools.addBlock(50, 100, 850, 830, 'red');
     // create player
 };
