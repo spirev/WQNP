@@ -2,14 +2,13 @@
 
 import { changeErrorMessage, gameUnsupported } from "./outside-game/error-message";
 import { initGame } from "./game-logic";
-import { staticsEntitiesState, staticsEntitiesTools } from "./entities-state/statics-entities/statics-entities-state";
-import { entitiesState, entitiesTools } from "./entities-state/entities/entities-state";
+import { staticsEntitiesState, staticsEntitiesTools } from "./entities-state/statics-entities/statics-entities-state.js";
+import { entitiesState, entitiesTools } from "./entities-state/entities/entities-state.js";
+import { Canvas } from "./canvas-layout";
 
 // RENDERING
-const render = (ctx, staticsEntities, entities) => {
-    console.log(staticsEntities);
-    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function render (ctx) {
+    ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
     // launch render function on every object in statics and none-statics entites
     staticsEntitiesTools.renderAllStaticsEntities(ctx);
     entitiesTools.renderAllEntities(ctx);
@@ -17,7 +16,7 @@ const render = (ctx, staticsEntities, entities) => {
 };
 
 // Function that is call on every frame (60 times by seconde)
-const gameLoop = (ctx, isInitRender = true) => {
+function gameLoop(ctx) {
     /**
      * TODO :
      * 
@@ -25,37 +24,32 @@ const gameLoop = (ctx, isInitRender = true) => {
      * - Change player pos from inputs
      * - pass info to render function below
      */
-    if (isInitRender) {
-        initGame(ctx);
-        isInitRender = false;
+    if (!mainCanvas.isInit) {
+        console.log('frame 0');
+        initGame();
+        mainCanvas.isFirstFrameRender = true;
     }
-    render(ctx, staticsEntitiesState, entitiesState);
+    console.log('frame 1');
+    render(ctx);
     // uncomment to start game
     // window.requestAnimationFrame(gameLoop(ctx));
 }
 
-// Initialize canvas width and height
-// Call gameLoop function
-const initCanvas = (ctx) => {
-    canvas.width = document.body.clientWidth;
-    canvas.height = document.body.clientHeight;
-    window.requestAnimationFrame(gameLoop(ctx));
-};
-
-// Resize game window on request
+// Resize game window
 window.addEventListener('resize', () => {
-    let canvas_width = document.body.clientWidth;
-    canvas.width = canvas_width;
+    let canvasWidth = document.body.clientWidth;
+    mainCanvas.width = canvasWidth;
 });
 
-// Get canvas to be accessible in the entirety of this file
-// Check if game functionnalites are supported by browser otherwise display error message
-const canvas = document.getElementById('game-canvas');
-if (canvas.getContext) {
-    const ctx = canvas.getContext('2d');
-    window.onload = initCanvas(ctx);
+// START
+const mainCanvas = new Canvas;
+
+// Is game supported by browser ? get 2D context : error message
+if (mainCanvas.htmlElement.getContext) {
+    const ctx = mainCanvas.htmlElement.getContext('2d');
+    window.onload = window.requestAnimationFrame(gameLoop(ctx));
 }
 else {
-    canvas.style.display = 'none';
+    mainCanvas.htmlElement.style.display = 'none';
     gameUnsupported();
 }
