@@ -1,0 +1,22 @@
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+This a brief note to explain how files logic work in this app <3
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+four different types of files handle the logic for the app :
+
+1 - canvas-core-rendering.js
+2 - game-logic.js
+3 - ( folder ) entities-layout
+4 - ( folder ) entities-state
+
+1 - 'canvas-rendering.js' is the starting point. It initialize the app and import all other files. Its main purpose is to render the game ( canvas plus all elements in it ).
+
+2 - 'game-logic.js' is the real game core logic where the magic happend !
+It determine all sort of stuff like : 'should this wave of monster appear ?' or 'player health is -5... should he be dead ?'
+Do not confuse this with internal logic of elements like monsters behavour which is contain in monster file itself. This is generic game logic, not game-elements logic.
+
+3 - Files in 'entities-layout' are the originals object of all ingame elements ( default player, default monsters, ground, ...) which are after instanciate as unique and independent object with own stats ( in entities-state ).
+All entites are gather all together in one final file ( entities-state.js )at the root of its folder
+
+4 - keep track of states ( location / health / ...) of instantiate ingame entities (player, monsters, ...).
+All statics-entites are gather all together in one final file ( statics-entities-state.js )at the root of its folder
