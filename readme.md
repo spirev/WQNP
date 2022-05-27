@@ -1,3 +1,3 @@
-Without Quest Nor Princess ( WQNP ) is a JS canvas game project to train myself to wrk with canvas.
+Without Quest Nor Princess ( WQNP ) is a JS canvas game project to teach myself to work with canvas.
 
-hope you enjoy !
+hope you will enjoy it ! <3
