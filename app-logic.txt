@@ -26,13 +26,13 @@ game-logic.js main functionalities are :
 entities-layout files define classes for pretty much every entitie of the game.
 ( layout also exists for out of game classes such as canvas, menu, ... )
 
-entities-state files are a container of the current state of siad entities at current time of game.
+entities-state files are a container of the current state of said entities at current time of game.
 Exemple, three goblins ennemies have been instantiated then the file called goblin-state should have three goblin classes stored in it.
 ( same thing apply for static-entities such as wall, block, ground, ... )
 Files named entites-state.js and static-entities-state.js ( at root of these folder ) are just parent container containing every static entites states or every static entities states.
 
 summary :
 
-canvas-core-rendering -> game-logic -> static-entities-state / entites-state -> layout 
+canvas-core-rendering -> game-logic -> static-entities-state / entites-state -> x-state -> layout 
 
 that's it !
