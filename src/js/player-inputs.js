@@ -46,6 +46,6 @@ export function updatePlayerPos() {
     const player = playerState[0];
     if (playerInputs._isLeft ) player._posX--;
     if (playerInputs._isRight) player._posX++;
-    if (playerInputs._isJump) player._posY++;
+    if (playerInputs._isJump) player._posY--;
     playerInputs.resetIsInput();
 }

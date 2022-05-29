@@ -7,26 +7,37 @@ import { entitiesState, entitiesTools } from "./entities-state/entities/entities
 import { updatePlayerPos } from "./player-inputs";
 import { Canvas } from "./canvas-layout";
 
+const mainCanvas = new Canvas;
+
+// Is game supported by browser ? get 2D context : error message
+if (mainCanvas.htmlElement.getContext) {
+    mainCanvas._context = mainCanvas._htmlElement.getContext('2d');
+    window.onload = window.requestAnimationFrame(gameLoop);
+}
+else {
+    mainCanvas.htmlElement.style.display = 'none';
+    gameUnsupported();
+}
+
 //Render every object in statics and none-statics entites state
-function render (ctx) {
-    staticsEntitiesTools.readStaticsEntities();
-    staticsEntitiesTools.renderAllStaticsEntities(ctx);
-    entitiesTools.renderAllEntities(ctx);
+function render() {
+    staticsEntitiesTools.renderAllStaticsEntities(mainCanvas._context);
+    entitiesTools.renderAllEntities(mainCanvas._context);
 };
 
 // This function is call on every frame (60 times by seconde)
 // Need to clear canvas on every frame
-function gameLoop(ctx) {
-    mainCanvas.clearCanvas(ctx);
+function gameLoop() {
+    mainCanvas.clearCanvas(mainCanvas._context);
     // Launch entities first instatiation before first frame is render
     if (!mainCanvas.isFirstFrameRender) {
         initGame();
         mainCanvas.isFirstFrameRender = true;
     }
-    render(ctx);
+    render();
 
     // uncomment to start game
-        // window.requestAnimationFrame(gameLoop(ctx));
+    window.requestAnimationFrame(gameLoop);
 }
 
 // Resize game window
@@ -34,16 +45,3 @@ window.addEventListener('resize', () => {
     let canvasWidth = document.body.clientWidth;
     mainCanvas.width = canvasWidth;
 });
-
-// START
-const mainCanvas = new Canvas;
-
-// Is game supported by browser ? get 2D context : error message
-if (mainCanvas.htmlElement.getContext) {
-    const ctx = mainCanvas.htmlElement.getContext('2d');
-    window.onload = window.requestAnimationFrame(gameLoop(ctx));
-}
-else {
-    mainCanvas.htmlElement.style.display = 'none';
-    gameUnsupported();
-}

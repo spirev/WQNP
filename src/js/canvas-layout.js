@@ -3,6 +3,7 @@ export class Canvas {
         this.width = document.body.clientWidth;
         this.height = document.body.clientHeight;
         this.htmlElement = document.getElementById('game-canvas');
+        this.context = this._htmlElement.getContext('2d');
         this.isFirstFrameRender = false;
     }
 
@@ -40,7 +41,15 @@ export class Canvas {
         this._htmlElement.height = this._height;
     };
 
-    clearCanvas(ctx) {
-        ctx.clearRect(0, 0, this._width, this._height);
+    get context() {
+        return this._context;
+    }
+
+    set context(value) {
+        this._context = value;
+    }
+
+    clearCanvas() {
+        this._context.clearRect(0, 0, this._width, this._height);
     }
 }
