@@ -29,7 +29,7 @@ export class Player {
 
     set width(value) {
         if (value < 0) {
-            console.error('player width can\'t be less than 0');
+            console.error('player width can\'t be a negative number');
             return;
         }
         this._width = value;
@@ -41,7 +41,7 @@ export class Player {
 
     set height(value) {
         if (value < 0) {
-            console.error('player height can\'t be less than 0');
+            console.error('player height can\'t be a negative number');
             return;
         }
         this._height = value;

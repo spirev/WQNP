@@ -12,7 +12,7 @@ export class Canvas {
 
     set width(value) {
         if (value < 0) {
-            console.error('canvas width can\'t be less than 1');
+            console.error('canvas width can\'t be a negative number');
             return;
         }
         this._width = value;
@@ -24,7 +24,7 @@ export class Canvas {
     
     set height(value) {
         if (value < 0) {
-            console.error('canvas height can\'t be less than 1');
+            console.error('canvas height can\'t be a negative number');
             return;
         }
         this._height = value;
@@ -39,4 +39,8 @@ export class Canvas {
         this._htmlElement.width = this._width;
         this._htmlElement.height = this._height;
     };
+
+    clearCanvas(ctx) {
+        ctx.clearRect(0, 0, this._width, this._height);
+    }
 }
